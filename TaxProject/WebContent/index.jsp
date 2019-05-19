@@ -96,18 +96,14 @@
     	</div>
   	</nav>
 
-  <header class="bg-primary text-white">
-    <div class="container text-center">
-      <h1>Income Tax Calculator</h1>
-      <p class="lead">A landing page template freshly redesigned for Bootstrap 4</p>
-    </div>
-  </header>
+ 
 
   <section id="tax-calculator">
   <div class="container register">
     	<div class="row">
-        	<div class="col-md-3 register-left">
-            	<img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+        	<div class="col-md-3 register-left ">
+            	<img src="images/PSIber-logo-webiste.jpg" alt=""/>
+                <br>
                 <h3>Welcome</h3>
                 <p>Try out our 2017/2018 tax calculator and find out your monthly income tax and the tax deductions available and compare it to last year's monthly income tax and tax deductions</p>
                 
@@ -180,8 +176,30 @@
     </div> 
   </section>
   
-  <section id="services" class="bg-light">
-   
+  <section id="services" class="bg-light" style="background-image: url('images/taxes-season-wall-ss-1920.jpg');">
+  	<div class="container">
+              <div class="row">
+                <div class="col-xs-12 ">
+                  <nav>
+                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">2017 Tax Tables</a>
+                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">2018 Tax Tables</a>
+                    </div>
+                  </nav>
+                  <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                      Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                      Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+                    </div>
+                  </div>
+                
+                </div>
+              </div>
+        </div>
+      </div>
+</div>
   </section>
 
 
@@ -193,12 +211,53 @@
     <!-- /.container -->
   </footer>
   
-  <script type="text/javascript">
-  
-  
-  
-  </script>
-  
+  <style>
+  nav > .nav.nav-tabs{
+
+  border: none;
+    color:#fff;
+    background:#272e38;
+    border-radius:0;
+
+}
+nav > div a.nav-item.nav-link,
+nav > div a.nav-item.nav-link.active
+{
+  border: none;
+    padding: 18px 25px;
+    color:#fff;
+    background:#272e38;
+    border-radius:0;
+}
+
+nav > div a.nav-item.nav-link.active:after
+ {
+  content: "";
+  position: relative;
+  bottom: -60px;
+  left: -10%;
+  border: 15px solid transparent;
+  border-top-color: #e74c3c ;
+}
+.tab-content{
+  background: #fdfdfd;
+    line-height: 25px;
+    border: 1px solid #ddd;
+    border-top:5px solid #e74c3c;
+    border-bottom:5px solid #e74c3c;
+    padding:30px 25px;
+}
+
+nav > div a.nav-item.nav-link:hover,
+nav > div a.nav-item.nav-link:focus
+{
+  border: none;
+    background: #e74c3c;
+    color:#fff;
+    border-radius:0;
+    transition:background 0.20s linear;
+}
+  </style>
 
 </body>
 <!-- Bootstrap core JavaScript -->
