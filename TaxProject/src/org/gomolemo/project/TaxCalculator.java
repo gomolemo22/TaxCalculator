@@ -43,7 +43,14 @@ public class TaxCalculator {
 			this.tax_year = Integer.parseInt(tax_year);
 			this.age = Integer.parseInt(age);
 			this.pay_rate = p_rate;
-			this.med_num = Integer.parseInt(med_num);
+			
+			if(med_num == "" || med_num == null){
+				this.med_num = 0;
+			}else{
+				this.med_num = Integer.parseInt(med_num);
+			}
+			
+			
 			
 			if(pay_rate.equalsIgnoreCase("monthly")){
 				gross_pay = Double.parseDouble(income);
@@ -52,6 +59,7 @@ public class TaxCalculator {
 			}
 		} catch (NumberFormatException e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 	}
@@ -67,7 +75,7 @@ public class TaxCalculator {
 
 		tax = 0.0;
 		if(checkThreshold()){
-			tax = (getTaxRates()[0]+(percentage*((gross_pay*12)-getTaxRates()[1])))-getRebate();
+			tax = (getTaxRates()[0]+(percentage*((gross_pay*12)-getTaxRates()[1])))-getRebate()-getTaxCredits();
 		}
 		
 		
@@ -182,6 +190,7 @@ public class TaxCalculator {
 		
 		if(med_num == 0){
 			tax_credits = 0;
+			return tax_credits;
 		}
 		
 		if(tax_year == 2017){

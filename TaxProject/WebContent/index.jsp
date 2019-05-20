@@ -1,4 +1,4 @@
-<%@page import="org.gomolemo.project.TaxCalculator"%> 
+ 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,10 +9,7 @@
 <link href="lib/bootstrap/css/scrolling-nav.css" rel="stylesheet">
 <title>PSiber</title>
 <%
-String monthlyTax = "0";
-String annualTax = "0";
-String taxCredits = "0";
-String netPay = "0";
+String[] results =  {"0","0","0","0"};
 %>
 <script type="text/javascript">
 	function submitForm(){
@@ -31,7 +28,7 @@ String netPay = "0";
 			http.send(data);
 			http.onload = function(){
 				var data = http.responseText
-				alert(data);
+				//alert(data);
 				window.location.href="index.jsp?value=" + data;
 				
 			}
@@ -86,6 +83,17 @@ String netPay = "0";
 </script>
 </head>
 <body>
+<%
+	String value = request.getParameter("value");
+	if(value != null){
+		String[] arrOfStr = value.split(",", -2); 
+		int count = 0;
+        for (String a : arrOfStr){
+        	results[count] = a;
+        	count++;
+        }
+	}
+%>
 
 
 	<!-- Navigation -->
@@ -137,17 +145,17 @@ String netPay = "0";
                         <div class="row register-form">
                         	<div class="col-md-6">
                             	<div class="form-group">
-                                	<select name="tax_year" class="form-control">
+                                	<select name="tax_year" class="form-control" required>
                                     	<option class="hidden"  selected disabled>Please select Tax Year</option>
                                         <option>2017</option>
                                         <option>2018</option>       
                                     </select>
                                 </div>
                             	<div class="form-group">
-                                	<input type="text" name="age" id="age" class="form-control" placeholder="Age *" value="" />
+                                	<input type="text" name="age" id="age" class="form-control" value="" placeholder="Age *" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="total_income" id="total_income" class="form-control" placeholder="Total income *" value="" />
+                                    <input type="text" name="total_income" id="total_income" class="form-control" value="" placeholder="Total income *" />
                                 </div>
                                 <div class="form-group">
 	                                <div class="maxl">
@@ -169,10 +177,10 @@ String netPay = "0";
                            
                            <div class="col-md-6">
                            		<ul class="list-group list-group-flush">
-								  <li class="list-group-item"><div class="col">Monthly Tax Due:</div><div class="col">R <span id="monthlyTax"><%=monthlyTax %></span></div></li>
-								  <li class="list-group-item"><div class="col">Annual Tax Due:</div><div class="col">R <span id="annualTax"><%=annualTax %></span></div></li>
-								  <li class="list-group-item"><div class="col">Tax Credits:</div><div class="col">R <span id="taxCredits"><%=taxCredits %></span></div></li>
-								  <li class="list-group-item"><div class="col">Net PAYE:</div><div class="col">R <span id="netPay"></span><%=netPay %></div></li>
+								  <li class="list-group-item"><div class="col">Monthly Tax Due:</div><div class="col">R <span id="monthlyTax"><%=results[0] %></span></div></li>
+								  <li class="list-group-item"><div class="col">Annual Tax Due:</div><div class="col">R <span id="annualTax"><%=results[1] %></span></div></li>
+								  <li class="list-group-item"><div class="col">Tax Credits:</div><div class="col">R <span id="taxCredits"><%=results[2] %></span></div></li>
+								  <li class="list-group-item"><div class="col">Net PAYE:</div><div class="col">R <span id="netPay"></span><%=results[3] %></div></li>
 								</ul>		
                            </div>
                         </div>
