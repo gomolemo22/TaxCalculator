@@ -194,7 +194,7 @@ public class TaxCalculator {
 		}
 		
 		if(tax_year == 2017){
-			if(med_num < 2){
+			if(med_num <= 2){
 				tax_credits = 286*med_num;
 				
 			}else if(med_num > 2){
@@ -202,7 +202,7 @@ public class TaxCalculator {
 				tax_credits = (286*2)+(192*(additional));
 			}
 		}else if(tax_year == 2018){
-			if(med_num < 2){
+			if(med_num <= 2){
 				tax_credits = 303*med_num;
 				
 			}else if(med_num > 2){

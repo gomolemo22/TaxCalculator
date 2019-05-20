@@ -10,6 +10,13 @@
 <title>PSiber</title>
 <%
 String[] results =  {"0","0","0","0"};
+String tax_year = "";
+String age = "";
+String total_income = "";
+String med_num = "";
+String pay_rate = "";
+boolean numeric = true;
+
 %>
 <script type="text/javascript">
 	function submitForm(){
@@ -45,7 +52,8 @@ String[] results =  {"0","0","0","0"};
 		var med_num = document.forms["TaxForm"]["med_num"].value;
 		var pay_rate = document.forms["TaxForm"]["pay_rate"].value;
 		
-		if(tax_year == ""){
+		
+		if(tax_year == "Please select Tax Year"){
 			alert("please select tax year");
 			return false;
 		}
@@ -53,21 +61,25 @@ String[] results =  {"0","0","0","0"};
 		if(age == ""){
 			alert("please enter your age");
 			return false;
-		}else if(isNaN(age)){
+		}
+		
+		if(isNaN(age)){
 			alert("please enter valid age");
 			return false;
 		}
 		
 		if(total_income == ""){
-			alert("please enter your age");
-			return false;
-		}else if(isNaN(total_income)){
-			alert("please enter valid age");
+			alert("please enter your total_income");
 			return false;
 		}
 		
-		if(pay_rate == ""){
-			alert("please select tax year");
+		if(isNaN(total_income)){
+			alert("please enter valid total_income");
+			return false;
+		}
+		
+		if(pay_rate == "Please select Pay Rate"){
+			alert("please select pay rate");
 			return false;
 		}
 		
@@ -93,6 +105,38 @@ String[] results =  {"0","0","0","0"};
         	count++;
         }
 	}
+	
+	tax_year = request.getParameter("tax_year");
+	
+	if(tax_year == null){
+		tax_year = "";
+	}
+	
+
+	age = request.getParameter("age");
+	if(age == null){
+		age = "";
+	}
+	
+	numeric = age.matches("-?\\d+(\\.\\d+)?");
+	if(!numeric){
+		age = "";
+	}
+	
+	
+	total_income = request.getParameter("total_income");
+	if(total_income == null){
+		total_income = "";
+	}
+	
+	numeric = total_income.matches("-?\\d+(\\.\\d+)?");
+	if(!numeric){
+		total_income = "";
+	}
+	
+	
+	
+	
 %>
 
 
@@ -145,17 +189,17 @@ String[] results =  {"0","0","0","0"};
                         <div class="row register-form">
                         	<div class="col-md-6">
                             	<div class="form-group">
-                                	<select name="tax_year" class="form-control" required>
+                                	<select name="tax_year" class="form-control" value="<%=tax_year %>" required>
                                     	<option class="hidden"  selected disabled>Please select Tax Year</option>
                                         <option>2017</option>
                                         <option>2018</option>       
                                     </select>
                                 </div>
                             	<div class="form-group">
-                                	<input type="text" name="age" id="age" class="form-control" value="" placeholder="Age *" />
+                                	<input type="text" name="age" id="age" class="form-control" value="<%=age %>" placeholder="Age *" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="total_income" id="total_income" class="form-control" value="" placeholder="Total income *" />
+                                    <input type="text" name="total_income" id="total_income" class="form-control" value="<%=total_income %>" placeholder="Total income *" />
                                 </div>
                                 <div class="form-group">
 	                                <div class="maxl">
